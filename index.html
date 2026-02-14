@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <link rel="preload" href="/radar.webp" as="image" type="image/webp">
+        <link rel="preload" href="/radar2.webp" as="image" type="image/webp">
 <link rel="preload" href="/logo.webp" as="image" type="image/webp">
 <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -62,7 +62,6 @@ fbq('track', 'PageView');
 <!-- NAV -->
 <nav class="nav">
 <div class="container">
-<!-- ⚠️ SUBSTITUA O src ABAIXO PELO BASE64 DO SEU LOGO, OU USE TEXTO -->
 <a href="#" class="nav-logo">
 <img src="/logo.webp" width="200" height="50" alt="Radar Jurídico">
 </a>
@@ -83,9 +82,9 @@ fbq('track', 'PageView');
 <div class="hero-cta-wrap">
 <a href="#cpf-check" class="cta-btn cta-btn--large">
 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-Verificar meu CPF
+Monitorar meu CPF
 </a>
-<span class="cta-sub">Verificação gratuita • Resultado em segundos</span>
+<span class="cta-sub">Cancele quando quiser • Sem fidelidade</span>
 </div>
 <div class="hero-proof">
 <div class="hero-proof-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Detecta novos processos 24h</div>
@@ -96,9 +95,8 @@ Verificar meu CPF
 <div class="hero-cta-mobile">
 <p class="hero-sub-mobile">Receba alertas no WhatsApp <strong>antes de ser intimado</strong> e evite bloqueios, multas, nome sujo e perda de prazos de defesa.</p>
 <div class="hero-proof-mobile"><span class="live-dot"></span> Monitoramento 24h &nbsp;•&nbsp; Todos tribunais do Brasil</div>
-<a href="#cpf-check" class="cta-btn cta-btn--large cta-btn--full"> Verificar meu CPF </a>
+<a href="#cpf-check" class="cta-btn cta-btn--large cta-btn--full"> Monitorar meu CPF </a>
 </div>
-<!-- ⚠️ SUBSTITUA "SUA-IMAGEM-AQUI.png" PELO SEU BASE64 OU URL DA IMAGEM DO WHATSAPP -->
 <div class="hero-image reveal">
 <img src="/radar.webp" width="480" height="520" loading="eager" alt="Exemplo de alerta do Radar Jurídico no WhatsApp">
   <div class="hero-image-caption">Exemplo real de alerta recebido no WhatsApp</div>
@@ -144,8 +142,8 @@ Verificar meu CPF
 <div class="how-step reveal"><div class="how-step-num">3</div><h3>Alerta imediato</h3><p>Abriram um processo contra você? Você recebe na hora no WhatsApp para poder agir rápido.</p></div>
 </div>
 <div style="text-align:center; margin-top:48px;" class="reveal">
-<a href="#cpf-check" class="cta-btn cta-btn--large"> Verificar meu CPF → </a>
-<span class="cta-sub">Verificação gratuita • Resultado em segundos</span>
+<a href="#cpf-check" class="cta-btn cta-btn--large"> Monitorar meu CPF → </a>
+<span class="cta-sub">Cancele quando quiser • Sem fidelidade</span>
 </div>
 </div>
 </section>
@@ -222,8 +220,8 @@ Verificar meu CPF
 <div class="faq-item reveal"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')"> Em quanto tempo começo a ser monitorado? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Imediatamente após a confirmação do pagamento. Seu CPF entra na base de monitoramento e você já começa a ser protegido.</p></div></div>
 </div>
 <div style="text-align:center; margin-top:48px;" class="reveal">
-<a href="#cpf-check" class="cta-btn cta-btn--large"> Verificar meu CPF → </a>
-<span class="cta-sub">Verificação gratuita • Resultado em segundos</span>
+<a href="#cpf-check" class="cta-btn cta-btn--large"> Monitorar meu CPF → </a>
+<span class="cta-sub">Cancele quando quiser • Sem fidelidade</span>
 </div>
 </div>
 </section>
@@ -233,8 +231,8 @@ Verificar meu CPF
 <div class="container reveal">
 <h2>Dormir tranquilo sabendo que você será avisado a tempo <span style="color:var(--accent)">não tem preço</span></h2>
 <p>Se abrirem um processo contra você amanhã, você vai saber na hora. A paz é outra.</p>
-<a href="#cpf-check" class="cta-btn cta-btn--large"> Verificar meu CPF → </a>
-<span class="cta-sub">Verificação gratuita • Resultado em segundos</span>
+<a href="#cpf-check" class="cta-btn cta-btn--large"> Monitorar meu CPF → </a>
+<span class="cta-sub">Cancele quando quiser • Sem fidelidade</span>
 </div>
 </section>
 
@@ -250,7 +248,7 @@ Verificar meu CPF
 <div class="cpf-modal" id="cpfModal">
 <div class="cpf-modal-box">
 <button class="cpf-modal-close" onclick="closeCpfModal()" aria-label="Fechar">✕</button>
-<div class="cpf-step active" id="cpfStep1">
+<div class="cpf-step" id="cpfStep1">
 <div class="cpf-step-icon">🛡️</div>
 <h2>Seu CPF está seguro?</h2>
 <p class="cpf-desc">Descubra em segundos se o seu CPF está exposto a novos processos judiciais em todo o Brasil.</p>
@@ -279,7 +277,7 @@ Verificar meu CPF
 <p class="cpf-result-msg">Seu CPF <strong>não possui monitoramento ativo</strong>. <br><br>Se alguém abrir um processo contra você agora, você só vai descobrir quando for tarde demais — com <strong style="color:#df0101">conta bloqueada, nome sujo, multas ou até risco de prisão</strong>.</p>
 <button class="cpf-result-btn" onclick="showStep(4)" style="background:var(--danger);"> 🛡️ Ver como se proteger </button>
 </div>
-<div class="cpf-step" id="cpfStep4">
+<div class="cpf-step active" id="cpfStep4">
 <div class="cpf-solution-title" style="margin-top:24px;">🛡️ Ative o Monitoramento Processual 24h</div>
 <div class="cpf-result-solution">
 <div class="cpf-result-price" style="margin-bottom:20px;"><div class="price-label">Por apenas</div><div class="price-value">R$ 147<span>/mês</span></div></div>
@@ -292,9 +290,10 @@ Verificar meu CPF
 <a id="checkoutBtn" href="https://pay.cakto.com.br/3a8uz4m" class="cpf-result-btn btn-checkout" style="margin-top:20px;"> 🛡️ Ativar Monitoramento </a></div>
 </div>
 </div>
+</div>
 
 <script>
-const cpfModal=document.getElementById('cpfModal');const cpfInput=document.getElementById('cpfInput');const cpfError=document.getElementById('cpfError');let rawCpf='';function openCpfModal(){cpfModal.classList.add('active');document.body.style.overflow='hidden';showStep(1);cpfInput.value='';cpfError.classList.remove('visible');cpfInput.classList.remove('error');setTimeout(()=>cpfInput.focus(),400)}function closeCpfModal(){cpfModal.classList.remove('active');document.body.style.overflow=''}cpfModal.addEventListener('click',(e)=>{if(e.target===cpfModal)closeCpfModal()});document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&cpfModal.classList.contains('active'))closeCpfModal()});function showStep(n){document.querySelectorAll('.cpf-step').forEach(s=>s.classList.remove('active'));document.getElementById('cpfStep'+n).classList.add('active');document.querySelector('.cpf-modal-box').scrollTop=0}cpfInput.addEventListener('input',(e)=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>9)v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');else if(v.length>6)v=v.replace(/(\d{3})(\d{3})(\d{1,3})/,'$1.$2.$3');else if(v.length>3)v=v.replace(/(\d{3})(\d{1,3})/,'$1.$2');e.target.value=v;cpfError.classList.remove('visible');cpfInput.classList.remove('error')});cpfInput.addEventListener('keydown',(e)=>{if(e.key==='Enter')startAnalysis()});function validateCpf(cpf){cpf=cpf.replace(/\D/g,'');if(cpf.length!==11||/^(\d)\1{10}$/.test(cpf))return false;let sum=0;for(let i=0;i<9;i++)sum+=parseInt(cpf[i])*(10-i);let d1=11-(sum%11);if(d1>=10)d1=0;if(parseInt(cpf[9])!==d1)return false;sum=0;for(let i=0;i<10;i++)sum+=parseInt(cpf[i])*(11-i);let d2=11-(sum%11);if(d2>=10)d2=0;return parseInt(cpf[10])===d2}function maskCpf(cpf){return'•••.'+cpf.slice(3,6)+'.'+cpf.slice(6,9)+'-••'}function startAnalysis(){rawCpf=cpfInput.value.replace(/\D/g,'');if(!validateCpf(rawCpf)){cpfInput.classList.add('error');cpfError.classList.add('visible');cpfInput.focus();return}showStep(2);document.getElementById('cpfDisplay').textContent=cpfInput.value;document.querySelectorAll('.cpf-check-item').forEach(el=>{el.classList.remove('active','done')});document.getElementById('cpfCounterBar').classList.remove('visible');const checks=[{id:'check1',activeDelay:300,doneDelay:2000,doneText:'CPF válido ✓'},{id:'check2',activeDelay:2200,doneDelay:5000,doneText:'91 tribunais consultados ✓'},{id:'check3',activeDelay:5200,doneDelay:8000,doneText:'Análise concluída ✓'},{id:'check4',activeDelay:8200,doneDelay:10500,doneText:'Relatório pronto ✓'},];checks.forEach(c=>{setTimeout(()=>{document.getElementById(c.id).classList.add('active')},c.activeDelay);setTimeout(()=>{const el=document.getElementById(c.id);el.classList.add('done');el.querySelector('.cpf-check-text').textContent=c.doneText},c.doneDelay)});setTimeout(()=>{document.getElementById('cpfCounterBar').classList.add('visible');animateProcessCounter()},3000);setTimeout(()=>{document.getElementById('cpfMasked').textContent=maskCpf(rawCpf);showStep(3)},11500)}function animateProcessCounter(){const el=document.getElementById('processCounter');const base=83000+Math.floor(Math.random()*25000);el.textContent=base.toLocaleString('pt-BR');const ticker=setInterval(()=>{const current=parseInt(el.textContent.replace(/\./g,''));el.textContent=(current+1).toLocaleString('pt-BR')},2000+Math.random()*2000);setTimeout(()=>clearInterval(ticker),15000)}const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));function animateCounters(){document.querySelectorAll('[data-count]').forEach(el=>{const target=parseInt(el.dataset.count);const duration=2000;const start=performance.now();function update(now){const elapsed=now-start;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);const current=Math.floor(eased*target);el.textContent=current.toLocaleString('pt-BR');if(progress<1)requestAnimationFrame(update)}requestAnimationFrame(update)})}const proofBar=document.querySelector('.proof-bar');const counterObserver=new IntersectionObserver((entries)=>{if(entries[0].isIntersecting){animateCounters();counterObserver.disconnect()}},{threshold:0.3});counterObserver.observe(proofBar);document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',(e)=>{if(link.getAttribute('href')==='#cpf-check'){e.preventDefault();openCpfModal();return}e.preventDefault();const target=document.querySelector(link.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}})});const heroImg=document.querySelector('.hero-image img');const modalImg=document.getElementById('whatsappPreviewImg');if(heroImg&&modalImg){modalImg.src=heroImg.src}
+const cpfModal=document.getElementById('cpfModal');const cpfInput=document.getElementById('cpfInput');const cpfError=document.getElementById('cpfError');let rawCpf='';function openCpfModal(){cpfModal.classList.add('active');document.body.style.overflow='hidden';showStep(4)}function closeCpfModal(){cpfModal.classList.remove('active');document.body.style.overflow=''}cpfModal.addEventListener('click',(e)=>{if(e.target===cpfModal)closeCpfModal()});document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&cpfModal.classList.contains('active'))closeCpfModal()});function showStep(n){document.querySelectorAll('.cpf-step').forEach(s=>s.classList.remove('active'));document.getElementById('cpfStep'+n).classList.add('active');document.querySelector('.cpf-modal-box').scrollTop=0}cpfInput.addEventListener('input',(e)=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>9)v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');else if(v.length>6)v=v.replace(/(\d{3})(\d{3})(\d{1,3})/,'$1.$2.$3');else if(v.length>3)v=v.replace(/(\d{3})(\d{1,3})/,'$1.$2');e.target.value=v;cpfError.classList.remove('visible');cpfInput.classList.remove('error')});cpfInput.addEventListener('keydown',(e)=>{if(e.key==='Enter')startAnalysis()});function validateCpf(cpf){cpf=cpf.replace(/\D/g,'');if(cpf.length!==11||/^(\d)\1{10}$/.test(cpf))return false;let sum=0;for(let i=0;i<9;i++)sum+=parseInt(cpf[i])*(10-i);let d1=11-(sum%11);if(d1>=10)d1=0;if(parseInt(cpf[9])!==d1)return false;sum=0;for(let i=0;i<10;i++)sum+=parseInt(cpf[i])*(11-i);let d2=11-(sum%11);if(d2>=10)d2=0;return parseInt(cpf[10])===d2}function maskCpf(cpf){return'•••.'+cpf.slice(3,6)+'.'+cpf.slice(6,9)+'-••'}function startAnalysis(){rawCpf=cpfInput.value.replace(/\D/g,'');if(!validateCpf(rawCpf)){cpfInput.classList.add('error');cpfError.classList.add('visible');cpfInput.focus();return}showStep(2);document.getElementById('cpfDisplay').textContent=cpfInput.value;document.querySelectorAll('.cpf-check-item').forEach(el=>{el.classList.remove('active','done')});document.getElementById('cpfCounterBar').classList.remove('visible');const checks=[{id:'check1',activeDelay:300,doneDelay:2000,doneText:'CPF válido ✓'},{id:'check2',activeDelay:2200,doneDelay:5000,doneText:'91 tribunais consultados ✓'},{id:'check3',activeDelay:5200,doneDelay:8000,doneText:'Análise concluída ✓'},{id:'check4',activeDelay:8200,doneDelay:10500,doneText:'Relatório pronto ✓'},];checks.forEach(c=>{setTimeout(()=>{document.getElementById(c.id).classList.add('active')},c.activeDelay);setTimeout(()=>{const el=document.getElementById(c.id);el.classList.add('done');el.querySelector('.cpf-check-text').textContent=c.doneText},c.doneDelay)});setTimeout(()=>{document.getElementById('cpfCounterBar').classList.add('visible');animateProcessCounter()},3000);setTimeout(()=>{document.getElementById('cpfMasked').textContent=maskCpf(rawCpf);showStep(3)},11500)}function animateProcessCounter(){const el=document.getElementById('processCounter');const base=83000+Math.floor(Math.random()*25000);el.textContent=base.toLocaleString('pt-BR');const ticker=setInterval(()=>{const current=parseInt(el.textContent.replace(/\./g,''));el.textContent=(current+1).toLocaleString('pt-BR')},2000+Math.random()*2000);setTimeout(()=>clearInterval(ticker),15000)}const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));function animateCounters(){document.querySelectorAll('[data-count]').forEach(el=>{const target=parseInt(el.dataset.count);const duration=2000;const start=performance.now();function update(now){const elapsed=now-start;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);const current=Math.floor(eased*target);el.textContent=current.toLocaleString('pt-BR');if(progress<1)requestAnimationFrame(update)}requestAnimationFrame(update)})}const proofBar=document.querySelector('.proof-bar');const counterObserver=new IntersectionObserver((entries)=>{if(entries[0].isIntersecting){animateCounters();counterObserver.disconnect()}},{threshold:0.3});counterObserver.observe(proofBar);document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',(e)=>{if(link.getAttribute('href')==='#cpf-check'){e.preventDefault();openCpfModal();return}e.preventDefault();const target=document.querySelector(link.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}})});const heroImg=document.querySelector('.hero-image img');const modalImg=document.getElementById('whatsappPreviewImg');if(heroImg&&modalImg){modalImg.src=heroImg.src}
 </script>
 
 <script>
@@ -313,5 +312,3 @@ document.getElementById('checkoutBtn').addEventListener('click',function(e){
 
 </body>
 </html>
-
-
