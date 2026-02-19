@@ -593,8 +593,8 @@
         document.getElementById('result-cpf').textContent = val;
         document.getElementById('result-tipo').textContent = isCNPJ ? 'CNPJ' : 'CPF';
         document.getElementById('cpf-preco').textContent = val;
-        document.getElementById('badge').textContent = qtd + (qtd === 1 ? ' processo encontrado' : ' processos encontrados');
-        document.getElementById('qtd-value').textContent = qtd + (qtd === 1 ? ' processo encontrado' : ' processos encontrados');
+        document.getElementById('badge').textContent = qtd + (qtd === 1 ? ' processo recente encontrado' : ' processos recentes encontrados');
+        document.getElementById('qtd-value').textContent = qtd + (qtd === 1 ? ' processo recente encontrado' : ' processos recentes encontrados');
 
         screenLoading.classList.remove('active');
         screenResult.classList.add('active');
