@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta de Processos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: 'Sora', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      color: #000000;
+      text-align: center;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .search-wrap {
+      width: 100%;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 22px 70px 22px 28px;
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #000000;
+      background: #F2F2F2;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      transition: background 0.15s;
+    }
+
+    .search-input::placeholder {
+      color: #999999;
+    }
+
+    .search-input:focus {
+      background: #EBEBEB;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: opacity 0.15s;
+    }
+
+    .search-btn:hover { opacity: 0.5; }
+
+    .search-btn svg {
+      width: 30px;
+      height: 30px;
+      stroke: #999999;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Loading screen */
+    .loading {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .loading.active {
+      display: flex;
+    }
+
+    .loading-icon {
+      width: 52px;
+      height: 52px;
+      color: #999999;
+    }
+
+    .loading-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000000;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .dots span {
+      opacity: 0;
+      animation: blink 1.2s infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.3s; }
+    .dots span:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main -->
+  <div class="container">
+    <h1>Consulte Processos</h1>
+    <div class="search-wrap">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Digite o CPF ou CNPJ"
+        maxlength="18"
+        inputmode="numeric"
+      />
+      <button class="search-btn" type="button" aria-label="Consultar">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <svg class="loading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <circle cx="12" cy="15" r="2.5"/>
+      <path d="M12 12.5V11"/>
+      <path d="M14.2 16.8l1 1"/>
+      <path d="M9.8 16.8l-1 1"/>
+    </svg>
+    <div class="loading-text">
+      Buscando processos<span class="dots"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+  </div>
+
+  <script>
+    const input = document.querySelector('.search-input');
+    const btn = document.querySelector('.search-btn');
+    const loading = document.getElementById('loading');
+
+    // Máscara CPF/CNPJ
+    input.addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '');
+      if (v.length <= 11) {
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      } else {
+        v = v.slice(0, 14);
+        v = v.replace(/(\d{2})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d)/, '$1/$2');
+        v = v.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+      }
+      e.target.value = v;
+    });
+
+    // Mostrar loading ao buscar
+    function buscar() {
+      if (input.value.trim().length < 11) return;
+      loading.classList.add('active');
+    }
+
+    btn.addEventListener('click', buscar);
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') buscar();
+    });
+  </script>
+
+</body>
+</html>
