@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Jesus IA</title>
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesus.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesusgrande.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/whatsapp.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo1.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo2.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo3.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo4.webp" as="image">
+<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/zapnotification.mp3" as="audio">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -791,7 +799,7 @@ async function phaseCliffhanger(pain) {
       <div class="tdot2"></div>
       <div class="tlabel">Expira em <span id="timerDisplay">14:59</span></div>
     </div>
-    <button class="cta-overlay" onclick="window.location.href='https://pay.cakto.com.br/336vqbg_777840'">Quero ouvir o que Jesus tem pra mim →</button>
+    <button class="cta-overlay" onclick="showCheckout()">Quero ouvir o que Jesus tem pra mim →</button>
   `;
   document.getElementById('phoneScreen').appendChild(overlay);
   requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
