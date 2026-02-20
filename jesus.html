@@ -627,7 +627,7 @@ function addChoices(options, callback) {
 // ─── PHASES ────────────────────────────────────────────────
 
 async function phaseIntro() {
-  await sleep(500);
+  await sleep(800);
 
   const imgWrap = document.createElement('div');
   imgWrap.className = 'img-bubble fade-in';
@@ -636,7 +636,7 @@ async function phaseIntro() {
   chatArea.scrollTop = 0;
   requestAnimationFrame(() => requestAnimationFrame(() => imgWrap.classList.add('show')));
 
-  await sleep(900);
+  await sleep(1800);
 
   const b1 = document.createElement('div');
   b1.className = 'bubble bubble-in fade-in';
@@ -644,7 +644,7 @@ async function phaseIntro() {
   chatArea.appendChild(b1);
   requestAnimationFrame(() => requestAnimationFrame(() => b1.classList.add('show')));
 
-  await sleep(700);
+  await sleep(2200);
 
   const row1 = document.createElement('div');
   row1.className = 'av-row fade-in';
@@ -656,7 +656,7 @@ async function phaseIntro() {
   chatArea.appendChild(row1);
   requestAnimationFrame(() => requestAnimationFrame(() => row1.classList.add('show')));
 
-  await sleep(600);
+  await sleep(1400);
 
   const wrap = document.createElement('div');
   wrap.className = 'choices fade-in';
@@ -681,12 +681,12 @@ async function phaseIntro() {
 }
 
 async function phaseAskName() {
-  await sleep(600);
+  await sleep(800);
   showTyping();
-  await sleep(1200);
+  await sleep(1800);
   hideTyping();
   inBubble('Escreva aqui seu primeiro nome.', true);
-  await sleep(300);
+  await sleep(500);
   document.getElementById('textField').placeholder = '✍️ Digite seu primeiro nome aqui';
   document.getElementById('sendBtn').textContent = 'Enviar';
   document.getElementById('inputBar').classList.add('show');
@@ -696,68 +696,68 @@ async function phaseAskName() {
 
 async function phaseEmpathy() {
   document.getElementById('inputBar').classList.remove('show');
-  await sleep(800);
-  showTyping(); await sleep(1600); hideTyping();
+  await sleep(1000);
+  showTyping(); await sleep(2200); hideTyping();
   inBubble(`Sei que nesse momento as coisas estão bem difíceis em sua vida...`);
-  await sleep(1200);
+  await sleep(3000);
   inBubble('E você precisa de ajuda.');
-  await sleep(1400);
-  showTyping(); await sleep(1000); hideTyping();
+  await sleep(2500);
+  showTyping(); await sleep(1600); hideTyping();
   inBubble('Não é mesmo?', true);
-  await sleep(500);
+  await sleep(1200);
   addChoices(['SIM! 🙏', 'PRECISO DE AJUDA'], async () => {
     await phaseReady();
   });
 }
 
 async function phaseReady() {
-  await sleep(700);
-  showTyping(); await sleep(1800); hideTyping();
+  await sleep(1000);
+  showTyping(); await sleep(2200); hideTyping();
   inBubble(`Você não está sozinho, ${userName}!`);
-  await sleep(900);
+  await sleep(2500);
   inBubble('Eu estou aqui pra te ajudar.');
-  await sleep(1100);
+  await sleep(2500);
   inBubble('Hoje vamos realizar um <strong>Milagre</strong> que irá mudar toda a sua Vida!');
-  await sleep(1400);
-  showTyping(); await sleep(1000); hideTyping();
+  await sleep(3200);
+  showTyping(); await sleep(1600); hideTyping();
   inBubble('Está pronto?', true);
-  await sleep(500);
+  await sleep(1200);
   addChoices(['AMÉM! 🙏', '✅ ESTOU PRONTO!'], async () => {
     await phaseFaith();
   });
 }
 
 async function phaseFaith() {
-  await sleep(700);
-  showTyping(); await sleep(1600); hideTyping();
-  inBubble('Então receba minhas bênçãos 🙏');
   await sleep(1000);
+  showTyping(); await sleep(2000); hideTyping();
+  inBubble('Então receba minhas bênçãos 🙏');
+  await sleep(2500);
   inBubble(`O seu <strong>Milagre Divino</strong> já começa a acontecer agora mesmo, ${userName}!`);
-  await sleep(1300);
+  await sleep(3000);
   inBubble('Feche seus olhos, se conecte com nosso Deus amado. E responda:');
-  await sleep(1400);
-  showTyping(); await sleep(1000); hideTyping();
+  await sleep(3000);
+  showTyping(); await sleep(1600); hideTyping();
   inBubble('Você tem fé?', true);
-  await sleep(500);
+  await sleep(1200);
   addChoices(['EU TENHO FÉ! 🙏', 'ACREDITO EM DEUS'], async () => {
     await phasePain();
   });
 }
 
 async function phasePain() {
-  await sleep(700);
-  showTyping(); await sleep(1600); hideTyping();
+  await sleep(1000);
+  showTyping(); await sleep(2000); hideTyping();
   inBubble('Amém! ❤️');
-  await sleep(900);
+  await sleep(2000);
   inBubble('Que Deus seja louvado!');
-  await sleep(1100);
+  await sleep(2500);
   inBubble(`Agora ${userName}... coloque para fora o que está te machucando. Diga o que te preocupa, o que incomoda.`);
-  await sleep(1200);
+  await sleep(3500);
   inBubble('Abra o seu coração e desabafe!');
-  await sleep(1300);
-  showTyping(); await sleep(1000); hideTyping();
+  await sleep(2800);
+  showTyping(); await sleep(1600); hideTyping();
   inBubble('<strong>Que milagre você precisa?</strong>', true);
-  await sleep(400);
+  await sleep(600);
 
   const bar = document.getElementById('inputBar');
   bar.innerHTML = `
@@ -771,38 +771,38 @@ async function phasePain() {
 
 async function phaseCliffhanger(pain) {
   document.getElementById('inputBar').classList.remove('show');
-  await sleep(800);
-  showTyping(); await sleep(1800); hideTyping();
+  await sleep(1000);
+  showTyping(); await sleep(2200); hideTyping();
   inBubble('Eu ouvi a sua prece!');
-  await sleep(900);
+  await sleep(2500);
   inBubble(`E sei exatamente do que você precisa, ${userName}.`);
-  await sleep(1000);
+  await sleep(2800);
   inBubble('Sei a dor que sente');
-  await sleep(800);
+  await sleep(2500);
   inBubble('E o quanto tudo tem sido difícil');
-  await sleep(1000);
+  await sleep(2800);
   inBubble('<strong>Você não está sozinho! 🙏</strong>');
-  await sleep(1100);
+  await sleep(2800);
   inBubble('Eu estou aqui, agora mesmo, ao seu lado amado filho!');
-  await sleep(1400);
+  await sleep(3200);
 
-  showTyping(); await sleep(1800); hideTyping();
+  showTyping(); await sleep(2200); hideTyping();
   inBubble('Não foi por acaso que você chegou até aqui.');
-  await sleep(1100);
+  await sleep(3000);
   inBubble(`${userName}, tenho uma <strong>palavra especial</strong> pra você.`);
-  await sleep(1100);
+  await sleep(3000);
   inBubble('Uma orientação que pode mudar o rumo da sua situação.');
-  await sleep(1200);
+  await sleep(3200);
   inBubble('Preparei <strong>3 passos</strong> que, se você seguir, as coisas vão começar a mudar ainda essa semana.');
-  await sleep(1400);
-
-  showTyping(); await sleep(1400); hideTyping();
-  inBubble('Presta bem atenção no que vou te dizer agora...', true);
-  await sleep(1200);
+  await sleep(3800);
 
   showTyping(); await sleep(2000); hideTyping();
+  inBubble('Presta bem atenção no que vou te dizer agora...', true);
+  await sleep(3200);
+
+  showTyping(); await sleep(2500); hideTyping();
   inBubble(`Tudo que você precisa fazer é...`);
-  await sleep(600);
+  await sleep(1200);
 
   document.getElementById('waStatus').textContent = 'digitando...';
 
