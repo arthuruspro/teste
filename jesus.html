@@ -277,13 +277,14 @@ html, body {
 .chat-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 260px;
-  background: linear-gradient(to top, rgba(236,229,221,1) 50%, rgba(236,229,221,0.9) 70%, rgba(236,229,221,0.4) 85%, rgba(236,229,221,0) 100%);
+  height: 30vh;
+  background: linear-gradient(to top, rgba(236,229,221,1) 60%, rgba(236,229,221,0.85) 80%, rgba(236,229,221,0) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 22px;
+  justify-content: center;
+  padding: 12px 20px 24px;
+  gap: 10px;
   opacity: 0;
   pointer-events: none;
   transition: opacity .6s ease;
@@ -638,15 +639,19 @@ function addChoices(options, callback) {
     btn.className = 'choice-btn';
     btn.textContent = opt;
     btn.onclick = () => {
-      wrap.remove(); // buttons disappear completely
+      wrap.remove();
       outBubble(opt);
-      scrollDown();
+      scrollCenter();
       setTimeout(() => callback(opt), 400);
     };
     wrap.appendChild(btn);
   });
   chatArea.appendChild(wrap);
-  scrollDown();
+  // scroll so buttons land at 75% down the screen
+  requestAnimationFrame(() => {
+    const wrapBottom = wrap.offsetTop + wrap.offsetHeight;
+    chatArea.scrollTop = wrapBottom - (chatArea.clientHeight * 0.75);
+  });
   requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.add('show')));
 }
 
