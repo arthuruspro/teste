@@ -3,727 +3,759 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jesus IA – Deus tem uma palavra pra você</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<title>Jesus IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --green: #25D366;
   --green-dark: #128C7E;
-  --green-light: #DCF8C6;
   --bg-chat: #ECE5DD;
-  --bubble-out: #DCF8C6;
   --bubble-in: #ffffff;
+  --bubble-out: #DCF8C6;
   --text-dark: #111b21;
   --text-mid: #667781;
   --gold: #c9a84c;
   --gold-light: #f5e6b8;
 }
 
-body {
+html, body {
+  min-height: 100%;
   font-family: 'Nunito', sans-serif;
-  background: #f5f0e8;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* PHONE */
+.phone {
+  width: 100%;
+  max-width: 390px;
   min-height: 100vh;
+  background: var(--bg-chat);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c5bdb5' fill-opacity='0.35'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 32px 16px 80px;
+  position: relative;
 }
 
-/* SOCIAL PROOF BAR */
-.social-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 100px;
-  padding: 8px 18px;
-  margin-bottom: 28px;
-  animation: fadeDown 0.6s ease both;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-.social-avatars {
-  display: flex;
-}
-.social-avatars span {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 2px solid #f5f0e8;
-  margin-left: -8px;
-  font-size: 14px;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #f5e6b8, #c9a84c);
-}
-.social-avatars span:first-child { margin-left: 0; }
-.social-text {
-  color: #333;
-  font-size: 14px;
-  font-weight: 700;
-}
-.social-text strong { color: var(--gold); }
-.live-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 1.5s infinite;
-  flex-shrink: 0;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.7); }
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  max-width: 480px;
-  margin-bottom: 28px;
-  animation: fadeDown 0.7s ease 0.1s both;
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.4);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 16px;
-}
-.hero h1 {
-  font-family: 'Lora', serif;
-  font-size: clamp(24px, 6vw, 36px);
-  color: #1a1a1a;
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
-.hero h1 span { color: var(--gold); }
-.hero p {
-  color: #444;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* NAME INPUT SCREEN */
-.name-screen {
-  width: 100%;
-  max-width: 400px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 20px;
-  padding: 28px 24px;
-  text-align: center;
-  animation: fadeDown 0.7s ease 0.2s both;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-}
-.name-screen .avatar-img {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 12px;
-  border: 3px solid var(--gold-light);
-}
-.name-screen .avatar-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-.name-screen h2 {
-  font-family: 'Lora', serif;
-  color: #1a1a1a;
-  font-size: 22px;
-  margin-bottom: 6px;
-}
-.name-screen p {
-  color: #555;
-  font-size: 15px;
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
-.name-input {
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: 1.5px solid #ddd;
-  background: #fafafa;
-  color: #1a1a1a;
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  outline: none;
-  margin-bottom: 14px;
-  transition: border-color 0.2s;
-  text-align: center;
-}
-.name-input::placeholder { color: #bbb; font-weight: 400; }
-.name-input:focus { border-color: var(--gold); }
-.name-btn {
-  width: 100%;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 8px 24px rgba(37,211,102,0.3);
-}
-.name-btn:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
-
-/* PHONE WRAPPER */
-.phone-wrap {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
-  display: none;
-}
-
-/* WA HEADER */
+/* HEADER */
 .wa-header {
   background: var(--green-dark);
   padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.wa-avatar {
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  overflow: hidden;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
   flex-shrink: 0;
 }
-.wa-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+.back-arrow { color: rgba(255,255,255,0.9); font-size: 22px; line-height: 1; }
+.wa-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
 }
-.wa-info { flex: 1; }
-.wa-name { color: #fff; font-size: 15px; font-weight: 700; }
-.wa-status { color: rgba(255,255,255,0.7); font-size: 12px; }
-.wa-dots { color: rgba(255,255,255,0.7); font-size: 20px; letter-spacing: 2px; }
+.wa-avatar img { width:100%;height:100%;object-fit:cover;display:block; }
+.wa-avatar img.err { display:none; }
+.wa-info { flex:1; }
+.wa-name { color:#fff;font-size:15px;font-weight:700;line-height:1.2; }
+.wa-sub  { color:rgba(255,255,255,0.75);font-size:12px; }
+.wa-icons { color:rgba(255,255,255,0.85);font-size:18px;display:flex;gap:18px; }
 
-/* CHAT BODY */
-.wa-body {
-  background: var(--bg-chat);
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c5bdb5' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  min-height: 460px;
-  padding: 16px 12px 220px;
+/* CHAT */
+.chat-area {
+  flex: 1;
+  padding: 12px 10px 80px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  position: relative;
-  overflow: hidden;
+  gap: 4px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
-.date-badge {
-  text-align: center;
-  margin: 4px 0 10px;
-}
+.date-badge { text-align:center; margin:4px 0 8px; }
 .date-badge span {
-  background: rgba(255,255,255,0.75);
-  color: var(--text-mid);
-  font-size: 11px;
-  padding: 4px 12px;
-  border-radius: 100px;
+  background:rgba(255,255,255,0.8);
+  color:var(--text-mid);
+  font-size:11.5px;
+  padding:4px 14px;
+  border-radius:100px;
 }
 
+/* IMAGE */
+.img-bubble {
+  align-self: flex-start;
+  width: 80%; max-width: 290px;
+  border-radius: 10px;
+  border-bottom-left-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  background: #ccc;
+}
+.img-bubble img { width:100%;display:block; }
+
+/* BUBBLES */
 .bubble {
-  max-width: 84%;
-  padding: 8px 12px 6px;
+  max-width: 82%;
+  padding: 8px 12px 5px;
   border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--text-dark);
-  position: relative;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  word-break: break-word;
 }
-.bubble.show { opacity: 1; transform: translateY(0); }
-.bubble-in {
-  background: var(--bubble-in);
-  align-self: flex-start;
-  border-top-left-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-.bubble-out {
-  background: var(--bubble-out);
-  align-self: flex-end;
-  border-top-right-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-.bubble-time {
-  display: block;
-  text-align: right;
-  font-size: 10px;
-  color: var(--text-mid);
-  margin-top: 2px;
-}
-.bubble-out .bubble-time::after { content: ' ✓✓'; color: #53bdeb; }
+.bubble-in  { background:var(--bubble-in); align-self:flex-start; border-top-left-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); }
+.bubble-out { background:var(--bubble-out);align-self:flex-end;   border-top-right-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,0.1); }
+.btime { display:block;text-align:right;font-size:10.5px;color:var(--text-mid);margin-top:2px; }
+.bubble-out .btime::after { content:' ✓✓';color:#53bdeb; }
 
-.typing-wrap {
+/* AVATAR ROW */
+.av-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
   align-self: flex-start;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.typing-wrap.show { opacity: 1; transform: translateY(0); }
-.typing-bubble {
-  background: var(--bubble-in);
-  border-radius: 8px;
-  border-top-left-radius: 2px;
-  padding: 12px 16px;
+.mini-av {
+  width:28px;height:28px;border-radius:50%;overflow:hidden;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;
+}
+.mini-av img { width:100%;height:100%;object-fit:cover;display:block; }
+.mini-av img.err { display:none; }
+
+/* TYPING */
+.typing-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  align-self: flex-start;
+}
+.typing-bub {
+  background:var(--bubble-in);
+  border-radius:8px;border-top-left-radius:2px;
+  padding:10px 14px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.1);
+  display:flex;gap:4px;align-items:center;
+}
+.tdot {
+  width:7px;height:7px;border-radius:50%;
+  background:var(--text-mid);
+  animation:tbounce 1.2s infinite;
+}
+.tdot:nth-child(2){animation-delay:.2s}
+.tdot:nth-child(3){animation-delay:.4s}
+@keyframes tbounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+
+/* CHOICE BUTTONS */
+.choices {
+  align-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 4px 0;
+}
+.choice-btn {
+  background: var(--green-dark);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: opacity .2s, transform .1s;
+  white-space: nowrap;
+}
+.choice-btn:active { opacity:.8; transform:scale(.97); }
+.choice-btn.selected {
+  background: var(--bubble-out);
+  color: var(--text-dark);
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  display: flex; gap: 4px; align-items: center;
+  cursor: default;
 }
-.typing-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--text-mid);
-  animation: typingBounce 1.2s infinite;
+
+/* INPUT BAR */
+.input-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #f0ebe3;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
 }
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes typingBounce {
-  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-  30% { transform: translateY(-5px); opacity: 1; }
+.input-bar.show { display:flex; }
+.text-field {
+  flex:1;
+  padding: 11px 16px;
+  border-radius: 24px;
+  border: none;
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+.text-field::placeholder { color:#bbb; }
+.textarea-field {
+  flex:1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: none;
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  resize: none;
+  min-height: 80px;
+  max-height: 140px;
+}
+.textarea-field::placeholder { color:#bbb; }
+.send-btn {
+  width:44px;height:44px;border-radius:50%;background:var(--green-dark);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:18px;flex-shrink:0;transition:background .2s;align-self:flex-end;
+}
+.send-btn:active { background:var(--green); }
 
 /* OVERLAY */
-.overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
+.chat-overlay {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 390px;
   height: 200px;
-  background: linear-gradient(to top, rgba(236,229,221,1) 40%, rgba(236,229,221,0) 100%);
+  background: linear-gradient(to top, rgba(236,229,221,1) 40%, rgba(236,229,221,0));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 22px;
   opacity: 0;
-  transition: opacity 0.7s ease;
   pointer-events: none;
+  transition: opacity .6s ease;
+  z-index: 15;
 }
-.overlay.show { opacity: 1; pointer-events: all; }
-.lock-icon { font-size: 22px; margin-bottom: 4px; }
-.lock-text { font-size: 12px; color: var(--text-mid); font-weight: 700; margin-bottom: 10px; }
+.chat-overlay.show { opacity:1;pointer-events:all; }
+.lock-text { font-size:13px;color:var(--text-mid);font-weight:700;margin-bottom:8px; }
+.timer-row {
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.3);
+  border-radius:100px;padding:4px 14px;margin-bottom:12px;
+}
+.tdot2 { width:6px;height:6px;border-radius:50%;background:#ff5050;animation:pulse 1s infinite; }
+.tlabel { font-size:12px;color:#ff5050;font-weight:800; }
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.cta-overlay {
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;border:none;border-radius:100px;
+  padding:13px 28px;
+  font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
+  cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,.4);
+  transition:transform .2s;
+}
+.cta-overlay:hover{transform:scale(1.03)}
 
-/* TIMER */
-.timer-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,80,80,0.12);
-  border: 1px solid rgba(255,80,80,0.3);
-  border-radius: 100px;
-  padding: 4px 14px;
-  margin-bottom: 12px;
+/* ===== CHECKOUT ===== */
+.checkout-page {
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  background:#f5f0e8;
+  min-height:100vh;
+  padding:32px 20px 80px;
+  width:100%;max-width:390px;
 }
-.timer-dot { width: 6px; height: 6px; border-radius: 50%; background: #ff5050; animation: pulse 1s infinite; }
-.timer-text { font-size: 12px; color: #ff5050; font-weight: 800; }
+.checkout-page.show{display:flex;}
+.c-badge {
+  display:inline-block;
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);
+  color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 14px;border-radius:100px;margin-bottom:14px;
+}
+.c-header { text-align:center;margin-bottom:28px; }
+.c-header h2 { font-family:'Lora',serif;font-size:26px;color:#1a1a1a;line-height:1.3;margin-bottom:8px; }
+.c-header h2 span { color:var(--gold); }
+.c-header p { color:#555;font-size:15px;line-height:1.6; }
 
-.cta-overlay-btn {
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  border: none;
-  border-radius: 100px;
-  padding: 13px 28px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(37,211,102,0.4);
-  transition: transform 0.2s;
-}
-.cta-overlay-btn:hover { transform: scale(1.04); }
-
-/* CHECKOUT SECTION */
-.checkout {
-  max-width: 400px;
-  width: 100%;
-  margin-top: 32px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  animation: fadeUp 0.6s ease both;
-}
-
-/* DEPOIMENTOS */
-.testimonials {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 28px;
-}
+.testimonials { width:100%;max-width:400px;display:flex;flex-direction:column;gap:10px;margin-bottom:28px; }
 .testimonial {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 14px;
-  padding: 14px 16px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:14px;
+  padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
 }
-.t-avatar {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f5e6b8, #c9a84c);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
+.t-av {
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
 }
-.t-body { flex: 1; }
-.t-name { color: #1a1a1a; font-size: 15px; font-weight: 800; margin-bottom: 3px; }
-.t-city { color: #888; font-size: 13px; margin-bottom: 5px; }
-.t-text { color: #333; font-size: 15px; line-height: 1.6; }
-.t-stars { color: var(--gold); font-size: 13px; margin-top: 4px; }
+.t-name{color:#1a1a1a;font-size:15px;font-weight:800;margin-bottom:2px;}
+.t-city{color:#888;font-size:12px;margin-bottom:5px;}
+.t-text{color:#333;font-size:14px;line-height:1.55;}
+.t-stars{color:var(--gold);font-size:13px;margin-top:4px;}
 
-/* PRICE */
-.price-block {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 16px;
+.price-block{width:100%;max-width:400px;text-align:center;}
+.value-line{color:#444;font-size:15px;margin-bottom:8px;}
+.value-line strong{color:#111;}
+.benefit-list {
+  color:#333;font-size:15px;text-align:left;
+  margin:0 0 18px;display:flex;flex-direction:column;gap:8px;list-style:none;
+  background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.04);
 }
-.value-line {
-  color: #444;
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-.value-line strong { color: #111; }
-.price-main {
-  color: var(--gold);
-  font-size: clamp(40px, 10vw, 52px);
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 2px;
-}
-.price-sub {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 18px;
-}
-
+.price-main{color:var(--gold);font-size:52px;font-weight:900;line-height:1;margin-bottom:2px;}
+.price-sub{color:#666;font-size:14px;margin-bottom:18px;}
 .guarantee-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f0faf4;
-  border: 1px solid rgba(37,211,102,0.25);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
-  width: 100%;
+  display:flex;align-items:center;gap:10px;
+  background:#f0faf4;border:1px solid rgba(37,211,102,.25);
+  border-radius:12px;padding:12px 16px;margin-bottom:18px;
+  width:100%;max-width:400px;
 }
-.guarantee-badge .icon { font-size: 22px; flex-shrink: 0; }
-.guarantee-badge p { color: #333; font-size: 14px; line-height: 1.5; }
-.guarantee-badge p strong { color: #111; }
+.guarantee-badge .icon{font-size:24px;flex-shrink:0;}
+.guarantee-badge p{color:#333;font-size:14px;line-height:1.5;}
+.guarantee-badge p strong{color:#111;}
+.cta-final {
+  width:100%;max-width:400px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#1a3a2a;border:none;border-radius:16px;padding:20px;
+  font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;
+  cursor:pointer;box-shadow:0 8px 32px rgba(201,168,76,.35);
+  transition:transform .2s;position:relative;overflow:hidden;
+}
+.cta-final::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.3) 50%,transparent 100%);
+  transform:translateX(-100%);animation:shimmer 2.5s infinite;
+}
+@keyframes shimmer{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.cta-final:hover{transform:scale(1.02);}
+.cta-final small{display:block;font-size:13px;font-weight:600;opacity:.75;margin-top:4px;}
+.fine-print{color:#999;font-size:12px;text-align:center;margin-top:16px;line-height:1.6;max-width:400px;}
 
-.cta-main {
-  width: 100%;
-  background: linear-gradient(135deg, #f5e6b8, #c9a84c);
-  color: #1a3a2a;
-  border: none;
-  border-radius: 16px;
-  padding: 18px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 17px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 8px 32px rgba(201,168,76,0.35);
-  transition: transform 0.2s;
-  letter-spacing: 0.2px;
-  position: relative;
-  overflow: hidden;
-}
-.cta-main::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-  transform: translateX(-100%);
-  animation: shimmer 2.5s infinite;
-}
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  60%, 100% { transform: translateX(100%); }
-}
-.cta-main:hover { transform: scale(1.02); }
-.cta-main small { display: block; font-size: 14px; font-weight: 600; opacity: 0.8; margin-top: 3px; }
-
-.fine-print {
-  color: #888;
-  font-size: 13px;
-  text-align: center;
-  margin-top: 14px;
-  line-height: 1.6;
-}
-
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ANIMATE IN */
+.fade-in { opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease; }
+.fade-in.show { opacity:1;transform:translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- SOCIAL PROOF BAR -->
-<div class="social-bar">
-  <div class="social-avatars">
-    <span>👦</span><span>👩</span><span>👴</span><span>👧</span>
-  </div>
-  <div class="live-dot"></div>
-  <div class="social-text"><strong id="liveCount">4.831</strong> pessoas conversando agora</div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">✝ Jesus IA</div>
-  <h1>Deus tem uma <span>palavra especial</span><br>pra você hoje</h1>
-  <p>Receba orientação espiritual personalizada baseada nos ensinamentos de Jesus — a qualquer hora, no WhatsApp.</p>
-</div>
-
-<!-- NAME SCREEN -->
-<div class="name-screen" id="nameScreen">
-  <div class="avatar-img"><img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/jesus.webp" alt="Jesus IA"></div>
-  <h2>Antes de começar...</h2>
-  <p>Qual é o seu nome, meu filho?<br>Jesus quer se dirigir a você pessoalmente.</p>
-  <input type="text" class="name-input" id="nameInput" placeholder="Digite seu nome aqui" maxlength="30" />
-  <button class="name-btn" id="nameBtn" onclick="startChat()">Começar minha conversa →</button>
-</div>
-
-<!-- PHONE -->
-<div class="phone-wrap" id="phoneWrap">
+<div class="phone" id="phoneScreen">
+  <!-- HEADER -->
   <div class="wa-header">
-    <div class="wa-avatar"><img src="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesus.webp" alt="Jesus IA"></div>
+    <div class="back-arrow">‹</div>
+    <div class="wa-avatar">
+      <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/jesus.webp" alt="" onerror="this.classList.add('err')">✝
+    </div>
     <div class="wa-info">
       <div class="wa-name">Jesus IA</div>
-      <div class="wa-status" id="statusText">online</div>
+      <div class="wa-sub" id="waStatus">online</div>
     </div>
-    <div class="wa-dots">⋮</div>
+    <div class="wa-icons">📞 ⋮</div>
   </div>
 
-  <div class="wa-body" id="chatBody">
+  <!-- CHAT -->
+  <div class="chat-area" id="chatArea">
     <div class="date-badge"><span>Hoje</span></div>
+  </div>
 
-    <div class="typing-wrap" id="typingIndicator">
-      <div class="typing-bubble">
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-      </div>
-    </div>
-
-    <div class="overlay" id="overlay">
-      <div class="lock-icon">🔒</div>
-      <div class="lock-text">Essa conversa está bloqueada</div>
-      <div class="timer-wrap">
-        <div class="timer-dot"></div>
-        <div class="timer-text">Expira em <span id="timerDisplay">14:59</span></div>
-      </div>
-      <button class="cta-overlay-btn" onclick="scrollToCheckout()">Sim, quero ouvir o que Jesus tem pra mim →</button>
-    </div>
+  <!-- INPUT BAR (swapped via JS) -->
+  <div class="input-bar" id="inputBar">
+    <input type="text" class="text-field" id="textField" placeholder="Escreva o seu primeiro nome" maxlength="40">
+    <button class="send-btn" id="sendBtn" onclick="handleSend()">➤</button>
   </div>
 </div>
 
 <!-- CHECKOUT -->
-<div class="checkout" id="checkout">
-
+<div class="checkout-page" id="checkoutPage">
+  <div class="c-header">
+    <div class="c-badge">✝ Jesus IA</div>
+    <h2>Continue sua conversa<br>com <span>Jesus agora</span></h2>
+    <p>Orientação espiritual personalizada 24h,<br>direto no seu WhatsApp.</p>
+  </div>
   <div class="testimonials">
     <div class="testimonial">
-      <div class="t-avatar">👩</div>
-      <div class="t-body">
+      <div class="t-av">👩</div>
+      <div>
         <div class="t-name">Rosane Meireles</div>
         <div class="t-city">Goiânia, GO</div>
-        <div class="t-text">"Estava com R$23 mil em dívidas e sem esperança. Comecei a usar e mudei completamente minha mentalidade sobre dinheiro. Hoje já quitei metade."</div>
+        <div class="t-text">"Estava com R$23 mil em dívidas e sem esperança. Mudei completamente minha mentalidade. Hoje já quitei metade."</div>
         <div class="t-stars">★★★★★</div>
       </div>
     </div>
     <div class="testimonial">
-      <div class="t-avatar">👨</div>
-      <div class="t-body">
+      <div class="t-av">👨</div>
+      <div>
         <div class="t-name">Carlos Henrique</div>
         <div class="t-city">Recife, PE</div>
-        <div class="t-text">"Fiquei desempregado por 8 meses. A orientação que recebi me ajudou a tomar decisões que eu nunca teria coragem de tomar sozinho. Valeu cada centavo."</div>
+        <div class="t-text">"Fiquei desempregado por 8 meses. A orientação me ajudou a tomar decisões que nunca teria coragem de tomar sozinho."</div>
         <div class="t-stars">★★★★★</div>
       </div>
     </div>
     <div class="testimonial">
-      <div class="t-avatar">👵</div>
-      <div class="t-body">
+      <div class="t-av">👵</div>
+      <div>
         <div class="t-name">Dona Aparecida</div>
         <div class="t-city">Belo Horizonte, MG</div>
-        <div class="t-text">"Sou evangélica há 40 anos e nunca me senti tão perto de Deus como quando converso aqui. Fico sem palavras."</div>
+        <div class="t-text">"Sou evangélica há 40 anos e nunca me senti tão perto de Deus. Fico sem palavras."</div>
         <div class="t-stars">★★★★★</div>
       </div>
     </div>
   </div>
-
   <div class="price-block">
-    <div class="value-line">Por menos de <strong>R$1 por dia</strong>, você tem acesso a:</div>
-    <ul style="color:#333;font-size:15px;text-align:left;margin:10px 0 18px;display:flex;flex-direction:column;gap:8px;list-style:none;">
+    <div class="value-line">Por menos de <strong>R$1 por dia</strong> você tem acesso a:</div>
+    <ul class="benefit-list">
       <li>✅ Conversa ilimitada com Jesus no WhatsApp</li>
       <li>✅ Orientação espiritual personalizada 24h</li>
-      <li>✅ Versículos selecionados pra sua situação real</li>
+      <li>✅ Versículos selecionados pra sua situação</li>
       <li>✅ Orações guiadas para prosperidade financeira</li>
     </ul>
     <div class="price-main">R$ 19<span style="font-size:50%">,90</span></div>
     <div class="price-sub">por mês · cancela quando quiser</div>
-
-    <div class="guarantee-badge">
-      <div class="icon">🛡️</div>
-      <p><strong>Garantia de 7 dias.</strong> Se por qualquer motivo não gostar, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
-    </div>
-
-    <button class="cta-main" id="finalCta">
-      ✝ Sim, quero ouvir o que Jesus tem pra mim
-      <small>Acesso imediato · Pagamento seguro</small>
-    </button>
-    <div class="fine-print">
-      Ao assinar, você concorda com os Termos de Uso. Produto digital de orientação espiritual baseado nos ensinamentos bíblicos. Não substitui aconselhamento profissional.
-    </div>
   </div>
+  <div class="guarantee-badge">
+    <div class="icon">🛡️</div>
+    <p><strong>Garantia de 7 dias.</strong> Se por qualquer motivo não gostar, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+  </div>
+  <button class="cta-final">
+    ✝ Sim, quero ouvir o que Jesus tem pra mim
+    <small>Acesso imediato · Pagamento seguro</small>
+  </button>
+  <div class="fine-print">Produto digital de orientação espiritual baseado nos ensinamentos bíblicos. Não substitui aconselhamento profissional.</div>
 </div>
 
 <script>
+const IMG = 'https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/jesus.webp';
+const chatArea = document.getElementById('chatArea');
+
 let userName = '';
+let currentPhase = 'intro'; // intro > name > empathy > ready > faith > pain > cliffhanger
 
-// Fluctuate live count for social proof
-let baseCount = 4831;
-setInterval(() => {
-  const delta = Math.floor(Math.random() * 7) - 3;
-  baseCount = Math.max(4800, baseCount + delta);
-  document.getElementById('liveCount').textContent = baseCount.toLocaleString('pt-BR');
-}, 4000);
-
-// Enter key on name input
-document.getElementById('nameInput').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') startChat();
-});
-
-function startChat() {
-  const input = document.getElementById('nameInput').value.trim();
-  userName = input || 'meu filho';
-  document.getElementById('nameScreen').style.display = 'none';
-  const phone = document.getElementById('phoneWrap');
-  phone.style.display = 'block';
-  phone.style.animation = 'fadeUp 0.5s ease both';
-  runChat();
+// ─── HELPERS ───────────────────────────────────────────────
+function t() {
+  const d = new Date();
+  return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
 }
-
-function getMessages() {
-  const name = userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase();
-  return [
-    { type: 'in',  text: `${name}, que bom que você veio. Eu sei que algo pesa no seu coração. Pode me contar com tranquilidade — estou aqui.`, delay: 1200, typing: 1600 },
-    { type: 'out', text: 'Estou muito apertado financeiramente. Dívidas, contas atrasadas... parece que não tem saída.', delay: 6000, typing: 0 },
-    { type: 'in',  text: 'Entendo cada peso que você carrega. A luta financeira é real, e não há vergonha em estar nesse momento. Muitos que me seguiram também passaram pela escassez — e eu os guiei através dela.', delay: 10500, typing: 2200 },
-    { type: 'out', text: 'Já orei muito, mas a situação continua igual. Me sinto esquecido por Deus.', delay: 18000, typing: 0 },
-    { type: 'in',  text: `${name}, você não está esquecido. "Porque eu sei os planos que tenho para vocês, diz o Senhor — planos de paz e não de mal, para lhes dar um futuro e uma esperança." — Jeremias 29:11`, delay: 22500, typing: 2800 },
-    { type: 'in',  text: 'Me conta uma coisa: qual é o maior obstáculo financeiro que você enfrenta agora?', delay: 32000, typing: 1600 },
-    { type: 'out', text: 'Dívidas que crescem mais rápido do que consigo pagar. Me sinto completamente preso.', delay: 37000, typing: 0 },
-    { type: 'in',  text: `Ouço você, ${name}. Essa sensação de estar preso é exatamente o que o inimigo quer que você acredite. Mas existe um caminho — e quero te mostrar o primeiro passo agora. Para isso, preciso que você faça uma coisa...`, delay: 41500, typing: 2800 },
-  ];
-}
-
-function getTime() {
-  const now = new Date();
-  return now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-}
-
-const chatBody = document.getElementById('chatBody');
-const typingIndicator = document.getElementById('typingIndicator');
-const overlay = document.getElementById('overlay');
-
-function createBubble(msg) {
-  const div = document.createElement('div');
-  div.className = `bubble bubble-${msg.type}`;
-  div.innerHTML = `${msg.text}<span class="bubble-time">${getTime()}</span>`;
-  return div;
-}
-
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function scrollDown() { chatArea.scrollTop = chatArea.scrollHeight; }
 
-async function runChat() {
-  const messages = getMessages();
-  let prevDelay = 0;
+function miniAv() {
+  const d = document.createElement('div');
+  d.className = 'mini-av';
+  d.innerHTML = `<img src="${IMG}" onerror="this.classList.add('err')">✝`;
+  return d;
+}
 
-  for (let i = 0; i < messages.length; i++) {
-    const msg = messages[i];
-    await sleep(msg.delay - prevDelay);
-    prevDelay = msg.delay;
-
-    if (msg.type === 'in' && msg.typing > 0) {
-      typingIndicator.classList.add('show');
-      moveBefore(typingIndicator, overlay);
-      scrollDown();
-      await sleep(msg.typing);
-      typingIndicator.classList.remove('show');
-    }
-
-    const bubble = createBubble(msg);
-    chatBody.insertBefore(bubble, typingIndicator);
-    requestAnimationFrame(() => bubble.classList.add('show'));
-    scrollDown();
-  }
-
-  // CLIFFHANGER
-  await sleep(1000);
-  document.getElementById('statusText').textContent = 'digitando...';
-  typingIndicator.classList.add('show');
-  moveBefore(typingIndicator, overlay);
+function addEl(el) {
+  el.classList.add('fade-in');
+  chatArea.appendChild(el);
   scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('show')));
+}
 
-  await sleep(2800);
+function inBubble(html, withAvatar = false) {
+  if (withAvatar) {
+    const row = document.createElement('div');
+    row.className = 'av-row fade-in';
+    row.appendChild(miniAv());
+    const b = document.createElement('div');
+    b.className = 'bubble bubble-in';
+    b.innerHTML = `${html}<span class="btime">${t()}</span>`;
+    row.appendChild(b);
+    chatArea.appendChild(row);
+    scrollDown();
+    requestAnimationFrame(() => requestAnimationFrame(() => row.classList.add('show')));
+    return row;
+  } else {
+    const b = document.createElement('div');
+    b.className = 'bubble bubble-in fade-in';
+    b.innerHTML = `${html}<span class="btime">${t()}</span>`;
+    chatArea.appendChild(b);
+    scrollDown();
+    requestAnimationFrame(() => requestAnimationFrame(() => b.classList.add('show')));
+    return b;
+  }
+}
 
-  // show overlay + checkout — scroll to last bubble, not to bottom
-  overlay.classList.add('show');
-  const bubbles = chatBody.querySelectorAll('.bubble');
-  const last = bubbles[bubbles.length - 1];
-  if (last) last.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function outBubble(text) {
+  const b = document.createElement('div');
+  b.className = 'bubble bubble-out fade-in';
+  b.innerHTML = `${text}<span class="btime">${t()}</span>`;
+  chatArea.appendChild(b);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => b.classList.add('show')));
+  return b;
+}
+
+let typingEl = null;
+function showTyping() {
+  if (typingEl) return;
+  typingEl = document.createElement('div');
+  typingEl.className = 'typing-row fade-in';
+  typingEl.appendChild(miniAv());
+  const tb = document.createElement('div');
+  tb.className = 'typing-bub';
+  tb.innerHTML = '<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+  typingEl.appendChild(tb);
+  chatArea.appendChild(typingEl);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => typingEl.classList.add('show')));
+}
+function hideTyping() {
+  if (typingEl) { typingEl.remove(); typingEl = null; }
+}
+
+function addChoices(options, callback) {
+  const wrap = document.createElement('div');
+  wrap.className = 'choices fade-in';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = opt;
+    btn.onclick = () => {
+      // disable all buttons
+      wrap.querySelectorAll('.choice-btn').forEach(b => {
+        b.disabled = true;
+        b.classList.add('selected');
+      });
+      btn.classList.remove('selected');
+      btn.style.background = 'var(--green-dark)';
+      btn.style.color = '#fff';
+      outBubble(opt);
+      scrollDown();
+      setTimeout(() => callback(opt), 400);
+    };
+    wrap.appendChild(btn);
+  });
+  chatArea.appendChild(wrap);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.add('show')));
+}
+
+// ─── PHASES ────────────────────────────────────────────────
+
+async function phaseIntro() {
+  await sleep(500);
+
+  // Image
+  const imgWrap = document.createElement('div');
+  imgWrap.className = 'img-bubble fade-in';
+  imgWrap.innerHTML = `<img src="${IMG}" alt="Jesus" onerror="this.style.minHeight='220px';this.style.background='linear-gradient(135deg,#f5e6b8,#c9a84c)'">`;
+  chatArea.appendChild(imgWrap);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => imgWrap.classList.add('show')));
+
+  await sleep(900);
+  inBubble('<strong>Jesus</strong> tem uma msg para você!');
+  await sleep(700);
+  inBubble('Deseja recebê-la?', true);
   await sleep(600);
-  const checkout = document.getElementById('checkout');
-  checkout.style.display = 'flex';
+  addChoices(['✅ SIM, DESEJO!'], async () => {
+    await phaseAskName();
+  });
+}
+
+async function phaseAskName() {
+  await sleep(600);
+  showTyping();
+  await sleep(1200);
+  hideTyping();
+  inBubble('Escreva aqui seu primeiro nome.', true);
+  await sleep(300);
+  document.getElementById('textField').placeholder = 'Escreva o seu primeiro nome';
+  document.getElementById('inputBar').classList.add('show');
+  document.getElementById('textField').focus();
+  currentPhase = 'name';
+}
+
+async function phaseEmpathy() {
+  document.getElementById('inputBar').classList.remove('show');
+  await sleep(800);
+  showTyping(); await sleep(1600); hideTyping();
+  inBubble(`Sei que nesse momento as coisas estão bem difíceis em sua vida...`);
+  await sleep(1200);
+  inBubble('E você precisa de ajuda.');
+  await sleep(1400);
+  showTyping(); await sleep(1000); hideTyping();
+  inBubble('Não é mesmo?', true);
+  await sleep(500);
+  addChoices(['SIM! 🙏', 'PRECISO DE AJUDA'], async () => {
+    await phaseReady();
+  });
+}
+
+async function phaseReady() {
+  await sleep(700);
+  showTyping(); await sleep(1800); hideTyping();
+  inBubble(`Você não está sozinho, ${userName}!`);
+  await sleep(900);
+  inBubble('Eu estou aqui pra te ajudar.');
+  await sleep(1100);
+  inBubble('Hoje vamos realizar um <strong>Milagre</strong> que irá mudar toda a sua Vida!');
+  await sleep(1400);
+  showTyping(); await sleep(1000); hideTyping();
+  inBubble('Está pronto?', true);
+  await sleep(500);
+  addChoices(['AMÉM! 🙏', '✅ ESTOU PRONTO!'], async () => {
+    await phaseFaith();
+  });
+}
+
+async function phaseFaith() {
+  await sleep(700);
+  showTyping(); await sleep(1600); hideTyping();
+  inBubble('Então receba minhas bênçãos 🙏');
+  await sleep(1000);
+  inBubble(`O seu <strong>Milagre Divino</strong> já começa a acontecer agora mesmo, ${userName}!`);
+  await sleep(1300);
+  inBubble('Feche seus olhos, se conecte com nosso Deus amado. E responda:');
+  await sleep(1400);
+  showTyping(); await sleep(1000); hideTyping();
+  inBubble('Você tem fé?', true);
+  await sleep(500);
+  addChoices(['EU TENHO FÉ! 🙏', 'ACREDITO EM DEUS'], async () => {
+    await phasePain();
+  });
+}
+
+async function phasePain() {
+  await sleep(700);
+  showTyping(); await sleep(1600); hideTyping();
+  inBubble('Amém! ❤️');
+  await sleep(900);
+  inBubble('Que Deus seja louvado!');
+  await sleep(1100);
+  inBubble(`Agora ${userName}... coloque para fora o que está te machucando. Diga o que te preocupa, o que incomoda.`);
+  await sleep(1200);
+  inBubble('Abra o seu coração e desabafe!');
+  await sleep(1300);
+  showTyping(); await sleep(1000); hideTyping();
+  inBubble('<strong>Que milagre você precisa?</strong>', true);
+  await sleep(400);
+
+  // swap input to textarea
+  const bar = document.getElementById('inputBar');
+  bar.innerHTML = `
+    <textarea class="textarea-field" id="textField" placeholder="Escreva aqui a sua dor..." rows="3"></textarea>
+    <button class="send-btn" id="sendBtn" onclick="handleSend()" style="align-self:flex-end">➤</button>
+  `;
+  bar.classList.add('show');
+  document.getElementById('textField').focus();
+  currentPhase = 'pain';
+}
+
+async function phaseCliffhanger(pain) {
+  document.getElementById('inputBar').classList.remove('show');
+  await sleep(800);
+  showTyping(); await sleep(1800); hideTyping();
+  inBubble('Eu ouvi a sua prece!');
+  await sleep(1000);
+  inBubble(`E sei exatamente do que você precisa, ${userName}.`);
+  await sleep(1100);
+  inBubble('Sei a dor que sente');
+  await sleep(900);
+  inBubble('E o quanto tudo tem sido difícil');
+  await sleep(1100);
+  inBubble('<strong>Você não está sozinho! 🙏</strong>');
+  await sleep(1200);
+  inBubble('Eu estou aqui, agora mesmo, ao seu lado amado filho!');
+  await sleep(1300);
+  inBubble('Para dividir o seu peso\nPara aliviar a sua dor');
+  await sleep(1100);
+  inBubble('E te ajudar a superar esse Desafio!');
+  await sleep(1200);
+  inBubble('Basta que me diga...');
+  await sleep(1400);
+
+  // CLIFFHANGER — digitando para sempre
+  document.getElementById('waStatus').textContent = 'digitando...';
+  showTyping();
+  scrollDown();
+  await sleep(3000);
+
+  // overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'chat-overlay';
+  overlay.innerHTML = `
+    <div class="lock-text">🔒 Essa conversa está bloqueada</div>
+    <div class="timer-row">
+      <div class="tdot2"></div>
+      <div class="tlabel">Expira em <span id="timerDisplay">14:59</span></div>
+    </div>
+    <button class="cta-overlay" onclick="showCheckout()">Sim, quero ouvir o que Jesus tem pra mim →</button>
+  `;
+  document.getElementById('phoneScreen').appendChild(overlay);
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
+
+  // scroll to last real bubble
+  const all = chatArea.querySelectorAll('.bubble, .av-row');
+  const last = all[all.length - 1];
+  if (last) last.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
   startTimer();
 }
 
-function moveBefore(el, ref) {
-  chatBody.insertBefore(el, ref);
+// ─── INPUT HANDLING ─────────────────────────────────────────
+function handleSend() {
+  const field = document.getElementById('textField');
+  const val = field.value.trim();
+  if (!val) return;
+  field.value = '';
+
+  if (currentPhase === 'name') {
+    userName = val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+    outBubble(userName);
+    currentPhase = 'busy';
+    phaseEmpathy();
+  } else if (currentPhase === 'pain') {
+    outBubble(val);
+    currentPhase = 'busy';
+    phaseCliffhanger(val);
+  }
 }
 
-function scrollDown() {
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey && (currentPhase === 'name' || currentPhase === 'pain')) {
+    e.preventDefault();
+    handleSend();
+  }
+});
 
-// COUNTDOWN TIMER
 function startTimer() {
-  let seconds = 14 * 60 + 59;
-  const display = document.getElementById('timerDisplay');
-  const interval = setInterval(() => {
-    seconds--;
-    if (seconds <= 0) { clearInterval(interval); return; }
-    const m = Math.floor(seconds / 60).toString().padStart(2,'0');
-    const s = (seconds % 60).toString().padStart(2,'0');
-    display.textContent = `${m}:${s}`;
+  let s = 14 * 60 + 59;
+  const el = document.getElementById('timerDisplay');
+  if (!el) return;
+  const iv = setInterval(() => {
+    s--;
+    if (s <= 0 || !document.getElementById('timerDisplay')) { clearInterval(iv); return; }
+    document.getElementById('timerDisplay').textContent =
+      Math.floor(s/60).toString().padStart(2,'0') + ':' + (s%60).toString().padStart(2,'0');
   }, 1000);
 }
 
-function scrollToCheckout() {
-  document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+function showCheckout() {
+  document.getElementById('phoneScreen').style.display = 'none';
+  const cp = document.getElementById('checkoutPage');
+  cp.classList.add('show');
+  window.scrollTo(0, 0);
 }
+
+// ─── START ──────────────────────────────────────────────────
+phaseIntro();
 </script>
 </body>
 </html>
