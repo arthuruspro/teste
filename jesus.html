@@ -121,7 +121,17 @@ body {
   animation: fadeDown 0.7s ease 0.2s both;
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
 }
-.name-screen .cross { font-size: 36px; margin-bottom: 12px; }
+.name-screen .avatar-img {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 12px;
+  border: 3px solid var(--gold-light);
+}
+.name-screen .avatar-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
 .name-screen h2 {
   font-family: 'Lora', serif;
   color: #1a1a1a;
@@ -188,10 +198,12 @@ body {
 .wa-avatar {
   width: 42px; height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f5e6b8, #c9a84c);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  overflow: hidden;
   flex-shrink: 0;
+}
+.wa-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
 }
 .wa-info { flex: 1; }
 .wa-name { color: #fff; font-size: 15px; font-weight: 700; }
@@ -487,7 +499,7 @@ body {
 
 <!-- NAME SCREEN -->
 <div class="name-screen" id="nameScreen">
-  <div class="cross">✝</div>
+  <div class="avatar-img"><img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/jesus.webp" alt="Jesus IA"></div>
   <h2>Antes de começar...</h2>
   <p>Qual é o seu nome, meu filho?<br>Jesus quer se dirigir a você pessoalmente.</p>
   <input type="text" class="name-input" id="nameInput" placeholder="Digite seu nome aqui" maxlength="30" />
@@ -497,7 +509,7 @@ body {
 <!-- PHONE -->
 <div class="phone-wrap" id="phoneWrap">
   <div class="wa-header">
-    <div class="wa-avatar">✝</div>
+    <div class="wa-avatar"><img src="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesus.webp" alt="Jesus IA"></div>
     <div class="wa-info">
       <div class="wa-name">Jesus IA</div>
       <div class="wa-status" id="statusText">online</div>
