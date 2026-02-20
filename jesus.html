@@ -683,6 +683,12 @@ async function phasePain() {
   `;
   bar.classList.add('show');
   document.getElementById('textField').focus();
+  // scroll Jesus's question into view above the textarea
+  setTimeout(() => {
+    const all = chatArea.querySelectorAll('.av-row, .bubble');
+    const last = all[all.length - 1];
+    if (last) last.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
   currentPhase = 'pain';
 }
 
@@ -742,7 +748,11 @@ async function phaseCliffhanger(pain) {
   // scroll to last real bubble
   const all = chatArea.querySelectorAll('.bubble, .av-row');
   const last = all[all.length - 1];
-  if (last) last.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (last) {
+    // scroll so last message sits in upper portion of screen, visible above overlay
+    last.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    chatArea.scrollTop += 60;
+  }
 
   startTimer();
 }
