@@ -515,27 +515,17 @@ let userName = '';
 let currentPhase = 'intro';
 
 // ─── WHATSAPP SOUND ─────────────────────────────────────────
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const waAudio = new Audio('https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/zapnotification.mp3');
+waAudio.volume = 0.6;
 function playWaSound() {
   try {
-    const now = audioCtx.currentTime;
-    // WhatsApp notification: short bright ping ~1174Hz with fast decay
-    const o1 = audioCtx.createOscillator();
-    const o2 = audioCtx.createOscillator();
-    const g  = audioCtx.createGain();
-    o1.connect(g); o2.connect(g); g.connect(audioCtx.destination);
-    o1.type = 'sine'; o1.frequency.value = 1174;
-    o2.type = 'sine'; o2.frequency.value = 2349; // harmonic octave
-    g.gain.setValueAtTime(0, now);
-    g.gain.linearRampToValueAtTime(0.3, now + 0.01);
-    g.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-    o1.start(now); o1.stop(now + 0.45);
-    o2.start(now); o2.stop(now + 0.2);
+    const s = waAudio.cloneNode();
+    s.volume = 0.6;
+    s.play().catch(() => {});
   } catch(e) {}
 }
-const unlockAudio = () => { if (audioCtx.state === 'suspended') audioCtx.resume(); };
-document.addEventListener('touchstart', unlockAudio, { once: true });
-document.addEventListener('click', unlockAudio, { once: true });
+document.addEventListener('touchstart', () => waAudio.load(), { once: true });
+document.addEventListener('click', () => waAudio.load(), { once: true });
 
 // ─── HELPERS ───────────────────────────────────────────────
 function t() {
