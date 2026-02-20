@@ -518,17 +518,36 @@ let userName = '';
 let currentPhase = 'intro';
 
 // ─── WHATSAPP SOUND ─────────────────────────────────────────
-const waAudio = new Audio('https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/zapnotification.mp3');
-waAudio.volume = 0.6;
-function playWaSound() {
+let audioCtx = null;
+let audioBuffer = null;
+let audioUnlocked = false;
+
+async function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
   try {
-    const s = waAudio.cloneNode();
-    s.volume = 0.6;
-    s.play().catch(() => {});
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const response = await fetch('https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/zapnotification.mp3');
+    const arrayBuffer = await response.arrayBuffer();
+    audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
   } catch(e) {}
 }
-document.addEventListener('touchstart', () => waAudio.load(), { once: true });
-document.addEventListener('click', () => waAudio.load(), { once: true });
+
+function playWaSound() {
+  if (!audioCtx || !audioBuffer) return;
+  try {
+    const source = audioCtx.createBufferSource();
+    source.buffer = audioBuffer;
+    const gain = audioCtx.createGain();
+    gain.gain.value = 0.6;
+    source.connect(gain);
+    gain.connect(audioCtx.destination);
+    source.start(0);
+  } catch(e) {}
+}
+
+document.addEventListener('touchstart', unlockAudio, { once: true });
+document.addEventListener('click', unlockAudio, { once: true });
 
 // ─── HELPERS ───────────────────────────────────────────────
 function t() {
@@ -538,8 +557,14 @@ function t() {
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 function scrollDown() { chatArea.scrollTop = chatArea.scrollHeight; }
 function scrollCenter() {
+  // Only scroll down — never scroll up and hide the Jesus image
   const last = chatArea.lastElementChild;
-  if (last) last.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (!last) return;
+  const lastBottom = last.offsetTop + last.offsetHeight;
+  const visibleBottom = chatArea.scrollTop + chatArea.clientHeight;
+  if (lastBottom > visibleBottom - 60) {
+    chatArea.scrollTop = lastBottom - chatArea.clientHeight + 80;
+  }
 }
 function setStatus(s) { document.getElementById('waStatus').textContent = s; }
 
@@ -796,13 +821,10 @@ async function phaseCliffhanger(pain) {
 
   showTyping(); await sleep(2000); hideTyping();
   inBubble(`Tudo que você precisa fazer é...`);
-  await sleep(800);
+  await sleep(600);
 
-  // CLIFFHANGER
+  // CLIFFHANGER — overlay aparece imediatamente, sem typing dots
   document.getElementById('waStatus').textContent = 'digitando...';
-  showTyping();
-  scrollDown();
-  await sleep(3200);
 
   // overlay
   const overlay = document.createElement('div');
@@ -818,13 +840,13 @@ async function phaseCliffhanger(pain) {
   document.getElementById('phoneScreen').appendChild(overlay);
   requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
 
-  // scroll to last real bubble
+  // Scroll pra "Tudo que você precisa fazer é..." ficar levemente tampado pelo overlay
+  await sleep(300);
   const all = chatArea.querySelectorAll('.bubble, .av-row');
   const last = all[all.length - 1];
   if (last) {
-    // Scroll so the last message is partially covered by overlay (tantalizing peek)
-    const lastBottom = last.offsetTop + last.offsetHeight;
-    chatArea.scrollTop = lastBottom - (chatArea.clientHeight * 0.55);
+    const targetScroll = last.offsetTop - (chatArea.clientHeight * 0.42);
+    chatArea.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
   }
 
   startTimer();
