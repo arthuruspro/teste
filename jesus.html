@@ -7,11 +7,6 @@
 <link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesus.webp" as="image">
 <link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/jesusgrande.webp" as="image">
 <link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/whatsapp.webp" as="image">
-<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo1.webp" as="image">
-<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo2.webp" as="image">
-<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo3.webp" as="image">
-<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/depo4.webp" as="image">
-<link rel="preload" href="https://raw.githubusercontent.com/arthuruspro/radar-juridico/main/zapnotification.mp3" as="audio">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -644,9 +639,28 @@ async function phaseIntro() {
   requestAnimationFrame(() => requestAnimationFrame(() => imgWrap.classList.add('show')));
 
   await sleep(900);
-  inBubble('<strong>Jesus</strong> tem uma msg para você!');
+
+  // primeiras 3 mensagens: usar scrollDown pra nao cobrir a imagem
+  const b1 = document.createElement('div');
+  b1.className = 'bubble bubble-in fade-in';
+  b1.innerHTML = `<strong>Jesus</strong> tem uma msg para você!<span class="btime">${t()}</span>`;
+  chatArea.appendChild(b1);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => b1.classList.add('show')));
+
   await sleep(700);
-  inBubble('Deseja recebê-la?', true);
+
+  const row1 = document.createElement('div');
+  row1.className = 'av-row fade-in';
+  row1.appendChild(miniAv());
+  const b2 = document.createElement('div');
+  b2.className = 'bubble bubble-in';
+  b2.innerHTML = `Deseja recebê-la?<span class="btime">${t()}</span>`;
+  row1.appendChild(b2);
+  chatArea.appendChild(row1);
+  scrollDown();
+  requestAnimationFrame(() => requestAnimationFrame(() => row1.classList.add('show')));
+
   await sleep(600);
   addChoices(['✅ SIM, DESEJO!'], async () => {
     await phaseAskName();
