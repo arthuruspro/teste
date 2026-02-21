@@ -902,11 +902,16 @@ function showCheckout() {
 }
 
 // ─── CHECKOUT CTA ───────────────────────────────────────────
+const _checkoutUrl = 'https://pay.cakto.com.br/336vqbg_777840';
+// Hidden anchor — UTMify intercepts <a> clicks to append UTM params
+const _checkoutLink = document.createElement('a');
+_checkoutLink.href = _checkoutUrl;
+_checkoutLink.style.display = 'none';
+document.body.appendChild(_checkoutLink);
+
 document.getElementById('ctaCheckoutBtn').addEventListener('click', function() {
   if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
-  setTimeout(function() {
-    window.location.href = 'https://pay.cakto.com.br/336vqbg_777840';
-  }, 600);
+  setTimeout(function() { _checkoutLink.click(); }, 600);
 });
 
 // ─── START ──────────────────────────────────────────────────
